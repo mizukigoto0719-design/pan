@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="パン工房 こもれび 公式オンラインショップ。焼き立ての美味しさを急速冷凍して、全国のご家庭へお届けします。">
+  <title>オンラインショップ | パン工房 こもれび</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* オンラインショップ専用スタイル */
+    .breadcrumb {
+      padding: 18px 7vw;
+      font-size: 12px;
+      color: #888;
+      background: #faf7f0;
+      border-bottom: 1px solid rgba(118, 84, 53, .08);
+    }
+    .breadcrumb a {
+      color: var(--deep);
+      transition: color .2s;
+    }
+    .breadcrumb a:hover {
+      color: var(--green);
+    }
+    .breadcrumb span {
+      margin: 0 8px;
+    }
+
+    .shop-hero {
+      background: linear-gradient(135deg, #f5f0e1 0%, #eae3cf 100%);
+      padding: 60px 7vw;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .shop-hero h1 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0 0 12px;
+      color: var(--deep);
+    }
+    .shop-hero p {
+      font-size: 14px;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 2;
+    }
+
+    .shop-notice-banner {
+      background: #f1f2df;
+      border-left: 4px solid var(--green);
+      padding: 16px 24px;
+      margin-bottom: 40px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px;
+    }
+    .shop-notice-banner h4 {
+      margin: 0 0 4px;
+      font-size: 14px;
+      color: var(--green);
+      font-family: 'Kaisei Decol', serif;
+    }
+
+    .ec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .ec-card {
+      border: 1px solid #e4dccb;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .ec-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .ec-card-photo {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .ec-card-photo.shokupan { background-image: url('assets/syokupan.png'); }
+    .ec-card-photo.cream { background-image: url('assets/kuri-mu.png'); }
+    .ec-card-photo.campagne { background-image: url('assets/kanpa-nyu.png'); }
+    .ec-card-photo.set { background-image: url('assets/pan.png'); }
+
+    .ec-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    .ec-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .ec-card-body h3 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 18px;
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+
+    .ec-card-body .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--brown);
+      margin-bottom: 12px;
+    }
+    .ec-card-body .price span {
+      font-size: 12px;
+      font-weight: normal;
+      color: #777;
+    }
+
+    .ec-card-body p {
+      font-size: 12.5px;
+      color: #555;
+      line-height: 1.8;
+      margin: 0 0 20px;
+      flex-grow: 1;
+    }
+
+    .btn-add-cart {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--green);
+      color: white;
+      padding: 12px 0;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      transition: background .3s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-add-cart:hover {
+      background: var(--deep);
+    }
+
+    .guide-section {
+      background: #faf7ec;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .guide-section h2 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 22px;
+      text-align: center;
+      margin: 0 0 30px;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .guide-item h3 {
+      font-size: 15px;
+      color: var(--green);
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .guide-item p {
+      font-size: 12.5px;
+      line-height: 1.8;
+      margin: 0;
+      color: #444;
+    }
+
+    @media (max-width: 900px) {
+      .ec-grid, .guide-grid {
+        grid-template-columns: 1fr;
+      }
+      .guide-section {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="logo" href="index.html" aria-label="パン工房こもれび ホーム">
+      <span>パン工房</span><strong>こもれび</strong><i>☘</i>
+    </a>
+    <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="global-nav" aria-label="メインナビゲーション">
+      <a href="index.html#about">こもれびについて</a>
+      <a href="index.html#commitment">こだわり</a>
+      <a href="index.html#menu">商品紹介</a>
+      <a href="index.html#shop">店舗情報</a>
+      <a class="shop-button" href="online-shop.html">オンラインショップ</a>
+    </nav>
+  </header>
+
+  <!-- パンくずリスト -->
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="index.html">ホーム</a><span>›</span>
+    オンラインショップ
+  </nav>
+
+  <!-- ヒーローエリア -->
+  <section class="shop-hero">
+    <p class="eyebrow">Online Shop</p>
+    <h1>焼き立てのおいしさを、そのままご家庭へ。</h1>
+    <p>「パン工房 こもれび」のパンを全国へお届けします。<br>独自の急速冷凍技術で焼き立ての香りとモチモチ食感を閉じ込めました。</p>
+  </section>
+
+  <main class="section">
+    <!-- お知らせバナー -->
+    <div class="shop-notice-banner">
+      <h4>🚚 お届け・送料について</h4>
+      パンはすべてクール冷凍便でお送りいたします。全国一律送料980円（税込）。5,000円以上のお買い上げで送料無料となります。
+    </div>
+
+    <!-- 商品一覧 -->
+    <div class="ec-grid">
+      <!-- 商品1 -->
+      <article class="ec-card">
+        <div class="ec-card-photo shokupan">
+          <span class="ec-badge">一番人気</span>
+        </div>
+        <div class="ec-card-body">
+          <h3>こもれび食パン（2斤セット）</h3>
+          <div class="price">￥960 <span>(税込)</span></div>
+          <p>ほんのりやさしい甘みと、しっとり・もちもちの食感が特徴の看板食パン。解凍後も焼きたての風味が広がります。</p>
+          <a href="product-shokupan.html" class="btn-add-cart">商品詳細を見る・購入</a>
+        </div>
+      </article>
+
+      <!-- 商品2 -->
+      <article class="ec-card">
+        <div class="ec-card-photo cream">
+          <span class="ec-badge">おすすめ</span>
+        </div>
+        <div class="ec-card-body">
+          <h3>自家製カスタードクリームパン（5個入）</h3>
+          <div class="price">￥1,300 <span>(税込)</span></div>
+          <p>毎朝手炊きする濃厚なカスタードクリームがたっぷり。解凍して少し温めると、とろけるような美味しさをお楽しみいただけます。</p>
+          <a href="product-cream.html" class="btn-add-cart">商品詳細を見る・購入</a>
+        </div>
+      </article>
+
+      <!-- 商品3 -->
+      <article class="ec-card">
+        <div class="ec-card-photo campagne">
+          <span class="ec-badge">季節限定</span>
+        </div>
+        <div class="ec-card-body">
+          <h3>季節の木漏れ日カンパーニュ</h3>
+          <div class="price">￥580 <span>(税込)</span></div>
+          <p>旬のドライフルーツとナッツを練り込んだハード系パン。噛むほどに広がる甘みと香ばしさはワインのお供にも最適です。</p>
+          <a href="product-campagne.html" class="btn-add-cart">商品詳細を見る・購入</a>
+        </div>
+      </article>
+
+      <!-- 商品4（詰め合わせセット） -->
+      <article class="ec-card">
+        <div class="ec-card-photo set">
+          <span class="ec-badge">お買い得</span>
+        </div>
+        <div class="ec-card-body">
+          <h3>こもれび 焼き立ておためしパンセット</h3>
+          <div class="price">￥2,980 <span>(税込)</span></div>
+          <p>食パン1斤、クリームパン2個、カンパーニュハーフ、季節のプチパン3種が入った、初めての方におすすめのお得な詰め合わせです。</p>
+          <button class="btn-add-cart" onclick="alert('カートに追加しました！')">カートに入れる</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- お買い物ガイド -->
+    <section class="guide-section">
+      <h2>ショッピングガイド</h2>
+      <div class="guide-grid">
+        <div class="guide-item">
+          <h3>📦 お届け方法</h3>
+          <p>品質を保つため、ヤマト運輸のクール冷凍便にてお届けします。ご注文から3〜5営業日以内に発送いたします。</p>
+        </div>
+        <div class="guide-item">
+          <h3>🍞 美味しい解凍方法</h3>
+          <p>自然解凍（室温で1〜2時間）後、トースターで1〜2分軽く温めていただくことで、焼き立てのような美味しさが戻ります。</p>
+        </div>
+        <div class="guide-item">
+          <h3>💳 お支払い方法</h3>
+          <p>クレジットカード決済、PayPay、コンビニ決済、銀行振込、代金引換がご利用いただけます。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="logo"><span>パン工房</span><strong>こもれび</strong><i>☘</i></div>
+    <p>やさしいパンで、しあわせな毎日を。</p>
+    <small>© PAN KOBO KOMOREBI</small>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
