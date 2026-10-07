@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="パン工房 こもれびの「季節の木漏れ日カンパーニュ」。旬のドライフルーツやナッツを贅沢に練り込んだ、噛むほどに味わい深いハード系パンです。">
+  <title>季節の木漏れ日カンパーニュ | パン工房 こもれび</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Klee+One:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 商品詳細ページ用の固有スタイル */
+    .breadcrumb {
+      padding: 20px 7vw;
+      font-size: 12px;
+      color: #888;
+      background: #faf7f0;
+      border-bottom: 1px solid rgba(118, 84, 53, .08);
+    }
+    .breadcrumb a {
+      color: var(--deep);
+      transition: color .2s;
+    }
+    .breadcrumb a:hover {
+      color: var(--green);
+    }
+    .breadcrumb span {
+      margin: 0 8px;
+    }
+
+    .product-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-gallery {
+      position: sticky;
+      top: 100px;
+    }
+
+    .product-main-image {
+      width: 100%;
+      height: 420px;
+      border-radius: 20px;
+      background: url('assets/kanpa-nyu.png') center/cover no-repeat;
+      box-shadow: var(--shadow);
+      border: 1px solid #e4dccb;
+    }
+
+    .product-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      letter-spacing: .08em;
+    }
+
+    .product-title-group h1 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: clamp(26px, 3.2vw, 38px);
+      margin: 0 0 8px;
+      line-height: 1.35;
+    }
+
+    .product-price {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .product-price span {
+      font-size: 13px;
+      font-weight: normal;
+      color: #777;
+    }
+
+    .product-description {
+      font-size: 15px;
+      line-height: 2.1;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .product-features {
+      background: #faf7ec;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+    }
+
+    .product-features h3 {
+      font-family: 'Kaisei Decol', serif;
+      font-size: 16px;
+      margin: 0 0 12px;
+      color: var(--deep);
+    }
+
+    .product-features ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 13.5px;
+      line-height: 1.9;
+    }
+
+    .product-meta {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 36px;
+      font-size: 13px;
+    }
+
+    .product-meta th, .product-meta td {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+
+    .product-meta th {
+      width: 110px;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    .action-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .btn-cart {
+      display: block;
+      text-align: center;
+      background: var(--deep);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      transition: all .3s;
+      box-shadow: 0 4px 15px rgba(76, 58, 37, .2);
+    }
+
+    .btn-cart:hover {
+      background: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-link a {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: bold;
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .product-detail {
+        grid-template-columns: 1fr;
+      }
+      .product-gallery {
+        position: static;
+      }
+      .product-main-image {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="logo" href="index.html" aria-label="パン工房こもれび ホーム">
+      <span>パン工房</span><strong>こもれび</strong><i>☘</i>
+    </a>
+    <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="global-nav" aria-label="メインナビゲーション">
+      <a href="index.html#about">こもれびについて</a>
+      <a href="index.html#commitment">こだわり</a>
+      <a href="index.html#menu">商品紹介</a>
+      <a href="index.html#shop">店舗情報</a>
+      <a class="shop-button" href="index.html#shop">オンラインショップ</a>
+    </nav>
+  </header>
+
+  <!-- パンくずリスト -->
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="index.html">ホーム</a><span>›</span>
+    <a href="index.html#menu">商品紹介</a><span>›</span>
+    季節の木漏れ日カンパーニュ
+  </nav>
+
+  <main>
+    <section class="section">
+      <div class="product-detail">
+        <!-- 左側：画像エリア -->
+        <div class="product-gallery">
+          <div class="product-main-image"></div>
+        </div>
+
+        <!-- 右側：詳細情報エリア -->
+        <div class="product-info">
+          <span class="product-badge">季節限定・こだわりパン</span>
+          <div class="product-title-group">
+            <h1>季節の木漏れ日カンパーニュ</h1>
+            <div class="product-price">
+              ￥580 <span>（税込 / 1ホール）</span>
+            </div>
+          </div>
+
+          <p class="product-description">
+            旬のドライフルーツやナッツを贅沢に練り込んだ、噛むほどに味わい深いハード系パン。<br>
+            自家製天然酵母でじっくりと発酵させ、小麦本来の旨味と香ばしい皮（クープ）の食感をしっかりと引き出しました。週末の特別な朝食や、ワインのお供にもおすすめです[cite: 7]。
+          </p>
+
+          <div class="product-features">
+            <h3>おすすめの楽しみ方</h3>
+            <ul>
+              <li><strong>薄くスライスしてそのままで：</strong> フルーツの甘みとナッツの香ばしさ、ライ麦のコクがダイレクトに楽しめます。</li>
+              <li><strong>チーズやバターと合わせて：</strong> クリームチーズやバターを添えると、ワインやコーヒーにぴったりな極上のペアリングに。</li>
+              <li><strong>少し温めて：</strong> トースターで1〜2分軽く温めると、ナッツの香ばしさがより引き立ちます。</li>
+            </ul>
+          </div>
+
+          <table class="product-meta">
+            <tr>
+              <th>原材料</th>
+              <td>国産小麦粉、全粒粉、ライ麦粉、自家製天然酵母、季節のドライフルーツ（イチジク、レーズン等）、ローストナッツ（クルミ、アーモンド等）、塩（一部に小麦・クルミを含む）</td>
+            </tr>
+            <tr>
+              <th>アレルギー</th>
+              <td>小麦、クルミ、アーモンド</td>
+            </tr>
+            <tr>
+              <th>賞味期限</th>
+              <td>製造日より4日（冷凍保存の場合は約2週間）</td>
+            </tr>
+            <tr>
+              <th>保存方法</th>
+              <td>直射日光・高温多湿を避けて常温保存。スライスしてラップに包み冷凍保存も可能です。</td>
+            </tr>
+          </table>
+
+          <div class="action-group">
+            <a href="index.html#shop" class="btn-cart">店舗・オンラインで購入する</a>
+          </div>
+
+          <div class="back-link">
+            <a href="index.html#menu">← 商品一覧へ戻る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="logo"><span>パン工房</span><strong>こもれび</strong><i>☘</i></div>
+    <p>やさしいパンで、しあわせな毎日を。</p>
+    <small>© PAN KOBO KOMOREBI</small>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
